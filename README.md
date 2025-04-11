@@ -72,9 +72,9 @@ After running either `gnn_training.py`, `gnn_training.ipynb` or `mlp_training.ip
 
 To evaluate the prediction performance, you can run the `evaluation.ipynb`.
 
-### Evaluation with metadata
+### Evaluation with Intermediate Results
 
-If you want to generate metadata(e.g. level4 data), 
+If you want to generate intermediate results(e.g. level4 data), 
 place the inferred gene expression profiles files in `evaluation/level3` and run the cells in `metric_comparison.ipynb`.
 
 Note that `metadata/model_summary.txt` should be properly edited, before runing `metric_comparison.ipynb`.
