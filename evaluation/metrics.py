@@ -6,10 +6,12 @@ import numpy as np
 import pandas as pd
 import pickle
 import torch
-from utils import *
+from .utils import *
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # ================================= GT, lmid load  ==================================
-lmid_path = "metadata/lmid_970.txt"
+lmid_path = os.path.join(current_dir, "metadata/lmid_970.txt")
 lmid_index = {}
 with open(lmid_path, 'r') as f: 
     lmid = [l.strip() for l in f.readlines()]
@@ -80,21 +82,17 @@ lmid_index[('greedy_forward', 108, 2)] = ['3800','3385','2810','7168','291','619
         '10013','55556','3775','10057']
 lmid_index[('greedy_forward', 54)] = lmid_index[('greedy_forward', 108)][:54]
 
-def performance_all(prediction_path, model_name, feature_selection_method, num_landmarks, root='', id=None):
+def performance_all(prediction_path, model_name, feature_selection_method, num_landmarks, root=''):
     output = [prediction_path, model_name, feature_selection_method, num_landmarks]
     
     # ================================= INF load  ==================================
-    with open("metadata/geneid_12320.txt", "r") as f:
+    with open(os.path.join(current_dir, "metadata/geneid_12320.txt"), "r") as f:
         rid = [line.strip() for line in f.readlines()]
     index_all = pd.Index(rid, name='rid')
-    if id is not None:
-        lmid = lmid_index[(feature_selection_method, num_landmarks, id)]
-        GT_path = f"GT_id{id}.pt"
-        GT = torch.load(GT_path)
-    else:
-        lmid = lmid_index[(feature_selection_method, num_landmarks)]
-        GT_path = "GT.pt"
-        GT = torch.load(GT_path)
+    lmid = lmid_index[(feature_selection_method, num_landmarks)]
+    GT_path = f"{root}GT.pkl"
+    with open(GT_path, 'rb') as f:
+        GT = pickle.load(f)   
     print(f"model:{model_name}, num(lm):{len(lmid)}")
     try:
         INF = torch.load(root+prediction_path) # numpy

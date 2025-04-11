@@ -26,7 +26,12 @@ This repository provides tools and models to explore relationships between genes
     ```
 3. Download the datasets in the following link:
     Please download RNAseq file through [this link](https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE92743&format=file&file=GSE92743%5FBroad%5FGTEx%5FRNAseq%5FLog2RPKM%5Fq2norm%5Fn3176x12320%2Egctx%2Egz)
+    and unzip through following code.
+
+    `gunzip GSE92743_Broad_GTEx_RNAseq_Log2RPKM_q2norm_n3176x12320.gctx.gz`
+
     Place this file in `data/` before you run the codes.
+
 
 ## Training the Models
 

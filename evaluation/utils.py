@@ -3,7 +3,9 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
+import os
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
 def calculate_Error(GT, INF):
   # GT / INF : (12320, 176) numpy ndarray (row, column orders should match)
   # output: list of Error values (length: 176)
@@ -28,19 +30,6 @@ def calculate_PCC(GT, INF):
     pcc.append(pearsonr(GT[:,i].flatten(), INF[:,i].flatten())[0])
   return pcc
 
-def calculate_SMAPE(GT, INF):
-  smape = []
-  for i in range(INF.shape[1]):
-    numerator = np.abs(GT[:, i] - INF[:, i])
-    denominator = (np.abs(GT[:, i]) + np.abs(INF[:, i])) / 2
-    denominator = np.where(denominator == 0, 1e-15, denominator)
-
-    smape_value = np.mean((numerator / denominator) * 100)
-    smape.append(smape_value)
-
-  return smape
-
-
 def recall_for_LM(GT, INF, lmid, index_all):
     # GT, INF: (12320, 176) numpy ndarray, whose order of rows (genes) matches with that of geneid_12320.txt
     # lmid: list of landmark ids
@@ -56,7 +45,7 @@ def recall_for_LM(GT, INF, lmid, index_all):
 
 def recall_test(GT, INF, lmid, nonlmid):
     # Load gene information for annotation
-    gene_info = pd.read_csv("geneinfo_beta.txt", sep="\t", dtype={"gene_id": str})
+    gene_info = pd.read_csv(os.path.join(current_dir, "metadata/geneinfo_beta.txt"), sep="\t", dtype={"gene_id": str})
     gene_info_dict = gene_info.set_index("gene_id")["gene_symbol"].to_dict()
 
     GT_rank = stats.rankdata(GT, axis=1)

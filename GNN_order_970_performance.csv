@@ -1,0 +1,2 @@
+config,model,feature selection,# landmarks,Error_mean,Error_stdev,SCC_mean,SCC_stdev,PCC_mean,PCC_stdev,r95,r99,num_AIG,rank_corr_AIG_mean,rank_corr_AIG_stdev,num_BING,rank_corr_BING_mean,rank_corr_BING_stdev
+gnn/GNN_all_970.pkl,GNN,order,970,2.8088,0.5352,0.9836,0.0059,0.9852,0.0062,11867,11366,12320,0.8612,0.0586,11867,0.8673,0.0580

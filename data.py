@@ -12,7 +12,8 @@ def dataload( root):
     l1000_array = np.array(l1000_raw)           # shape: (970, 3176), min~max: 1.64900004863739 ~ 15.0040998458862
     l1000_array = l1000_array / np.max(l1000_array)
 
-    path2 = f'{root}/no_hdf5_compression_GTEx_RNAseq_Log2RPKM_q2norm_n3176x12320.gctx'
+    # path2 = f'{root}/no_hdf5_compression_GTEx_RNAseq_Log2RPKM_q2norm_n3176x12320.gctx'
+    path2 = f'{root}/GSE92743_Broad_GTEx_RNAseq_Log2RPKM_q2norm_n3176x12320.gctx'
     RNAseq_raw = cmapPy.pandasGEXpress.parse(path2)
     RNAseq_array = np.array(RNAseq_raw.data_df) # shape: (12320, 3176), min~max: 0.0 ~ 12.847019
     RNAseq_array = RNAseq_array / np.max(RNAseq_array)
