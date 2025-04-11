@@ -70,15 +70,6 @@ Then, follow the instructions(`readme.md`) in `swinir/`.
 
 After running either `gnn_training.py`, `gnn_training.ipynb` or `mlp_training.ipynb`, the inferred gene expression profiles for the test set will be saved in the `prediction/` directory.
 
-To evaluate the prediction accuracy, you can run the evaluation script or notebook:
+To evaluate the prediction performance, you can run the evaluation code in `evaluation_metric`.
 
-### Option 1: Jupyter Notebook
-
-```bash
-jupyter notebook evaluation.ipynb
-```
-
-### Option 2: Python Script
-```bash
-python evaluation.py --pred_path prediction/your_prediction_file.pt
-```
+Place the inferred gene expression profiles files in `evaluation_metric/level3` and run the cells in `metric_comparison.ipynb`.
