@@ -1,12 +1,13 @@
 # GeneExpressionGNN
 
-GeneExpressionGNN is a project focused on leveraging graph neural networks (GNNs) for inferring patterns in gene expression data. 
+GeneExpressionGNN is a project focused on leveraging graph neural networks (GNNs) and other models for inferring patterns in gene expression data. 
 This repository provides tools and models to explore relationships between genes and their expression profiles.
 
 ## Features
 
-- maining code for gene expression prediction from L1000 data to RNAseq data.
+- Code for gene expression prediction from L1000 data to RNAseq data.
 - Implementation of graph neural network architectures.
+- Training codes for GNN, MLP, and SwinIR.
 - Evaluation metrics for gene expression prediction.
 
 ## Installation
@@ -26,16 +27,19 @@ This repository provides tools and models to explore relationships between genes
 3. Download the datasets in the following link:
     TBD
 
-## Training the GNN Model
+
+## Training the Models
+
+### Training the GNN Models
 
 You can run this project using either the Python script or the Jupyter Notebook:
 
 
-### Option 1: Jupyter Notebook
+#### Option 1: Jupyter Notebook
 
 Open `gnn_training.ipynb` with Jupyter Notebook or JupyterLab, and run the cells in order.  
 
-### Option 2: Python Script
+#### Option 2: Python Script
 
 To run the training as a script, use:
 
@@ -45,13 +49,13 @@ python gnn_training.py --select_method order --select_gene_num 970 --graph cos50
 python gnn_training.py --select_method greedy_forward --select_gene_num 108 --graph cos50_Lfull_Nposneg --lr 0.0005 --gpu 0 --loss L1
 ```
 
-## Training the MLP Model
+### Training the MLP Model
 
 To train the MLP model, use:
 
 Open `mlp_training.ipynb` with Jupyter Notebook or JupyterLab, and run the cells in order.  
 
-## Training the SwinIR Model
+### Training the SwinIR Model
 
 To train the SwinIR model, move to the `swinir/` directory.
 
