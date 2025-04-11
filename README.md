@@ -25,8 +25,8 @@ This repository provides tools and models to explore relationships between genes
     pandas==2.2.3
     ```
 3. Download the datasets in the following link:
-    TBD
-
+    Please download RNAseq file through [this link](https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE92743&format=file&file=GSE92743%5FBroad%5FGTEx%5FRNAseq%5FLog2RPKM%5Fq2norm%5Fn3176x12320%2Egctx%2Egz)
+    Place this file in `data/` before you run the codes.
 
 ## Training the Models
 
@@ -70,6 +70,13 @@ Then, follow the instructions(`readme.md`) in `swinir/`.
 
 After running either `gnn_training.py`, `gnn_training.ipynb` or `mlp_training.ipynb`, the inferred gene expression profiles for the test set will be saved in the `prediction/` directory.
 
-To evaluate the prediction performance, you can run the evaluation code in `evaluation_metric`.
+To evaluate the prediction performance, you can run the `evaluation.ipynb`.
 
-Place the inferred gene expression profiles files in `evaluation_metric/level3` and run the cells in `metric_comparison.ipynb`.
+### Evaluation with metadata
+
+If you want to generate metadata(e.g. level4 data), 
+place the inferred gene expression profiles files in `evaluation/level3` and run the cells in `metric_comparison.ipynb`.
+
+Note that `metadata/model_summary.txt` should be properly edited, before runing `metric_comparison.ipynb`.
+
+Please refer to the evaluation instructions(`evaluation/readme.md`) for the details.

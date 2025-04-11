@@ -2,7 +2,7 @@ import torch
 import copy
 import scipy.stats as stats
 import time
-import random 
+import pickle 
 import warnings
 import numpy as np
 warnings.filterwarnings('ignore')
@@ -41,7 +41,7 @@ def train(model, data, config_name, loss_func, epochs, lr, wd):
     optimizer = torch.optim.Adam(model.parameters(), lr = lr, weight_decay = wd)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor = 0.5, verbose=False)
     valid_step = 10
-    save_prediction = f'prediction/mlp/{config_name}.pt'
+    save_prediction = f'prediction/mlp/{config_name}.pkl'
     patience = 0
     print_loss = 0.
     best_loss, best_corr = 1e10, -1.
@@ -68,7 +68,8 @@ def train(model, data, config_name, loss_func, epochs, lr, wd):
                 print(f"Epoch {e:3d} Test Loss\t{result_dict_test['loss']:.3f}\tCorr\t{result_dict_test['corr']:.4f}" )
                 # save temporal best 1) checkpoint and 2) inferred gene expressions for test set
                 torch.save(best_model.state_dict(), f'checkpoints/mlp/{config_name}.pt')
-                torch.save(np.array(result_dict_test['prediction'].cpu().detach()).squeeze().T, save_prediction)
+                with open(save_prediction, 'wb') as f:
+                    pickle.dump(np.array(result_dict_test['prediction'].cpu().detach()).squeeze().T, f)
                 patience = 0
             else:
                 patience += 1

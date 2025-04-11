@@ -1,0 +1,15 @@
+feature_selection_method	num_landmarks	lmid_list
+LASSO	108	lmid_lasso_108
+LASSO	142	lmid_alpha_001
+LASSO	10	lmid_alpha_003
+LASSO	1	lmid_alpha_005
+random	486	lmid_486
+random	324	lmid_324
+random	108	lmid_108
+random	10	lmid_10
+random	1	lmid_1
+greedy	108	gf_108
+greedy	10	gf_10
+greedy	1	gf_1
+all	970	lmid_970
+all	978	lmid_970
